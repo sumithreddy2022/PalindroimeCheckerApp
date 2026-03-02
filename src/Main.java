@@ -1,14 +1,17 @@
-class UseCase2PalindromeCheckerApp {
+import java.util.*;
+ class PalindromeChecker {
     public static void main(String[] args) {
-        String str = "madam";
-        String reversed = "";
-        for (int i = str.length() - 1; i >= 0; i--) {
-            reversed += str.charAt(i);
-        }
-        if (str.equals(reversed)) {
-            System.out.println(str + " is a Palindrome");
-        } else {
-            System.out.println(str + " is not a Palindrome");
-        }
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        Stack<Character> stack = new Stack<>();
+        for (char c : s.toCharArray())
+            stack.push(c);
+        boolean isPalindrome = true;
+        for (char c : s.toCharArray())
+            if (c != stack.pop()) {
+                isPalindrome = false;
+                break;
+            }
+        System.out.println(isPalindrome ? "Palindrome" : "Not Palindrome");
     }
 }
