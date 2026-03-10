@@ -1,11 +1,30 @@
-class UseCase1PalindromeCheckerApp {
+import java.util.Scanner;
+
+ class PalindromeCheckerApp {
+
+    static boolean isPalindrome(String str, int start, int end) {
+
+        if (start >= end)
+            return true;
+
+        if (str.charAt(start) != str.charAt(end))
+            return false;
+
+        return isPalindrome(str, start + 1, end - 1);
+    }
+
     public static void main(String[] args) {
 
-        System.out.println("====================================");
-        System.out.println("   Welcome to Palindrome Checker App ");
-        System.out.println("====================================");
-        System.out.println("Application Version : 1.0");
-        System.out.println("Status              : Started");
-        System.out.println("====================================");
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+
+        if (isPalindrome(input, 0, input.length() - 1))
+            System.out.println("Palindrome");
+        else
+            System.out.println("Not Palindrome");
+
+        scanner.close();
     }
 }
